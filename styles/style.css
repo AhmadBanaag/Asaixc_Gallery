@@ -1,0 +1,1137 @@
+@font-face {
+    font-family: "Montserrat";
+    src: url(../fonts/Montserrat/Montserrat-VariableFont_wght.ttf) format('truetype');
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Montserrat", sans-serif;
+
+}
+
+html, body {
+    width: 100%;
+    overflow-x: hidden; /* Dili mag-lapaw sa side */
+}
+
+.navbar {
+    width: 100%;
+    padding: 10px 10%;
+    background: linear-gradient(
+        to bottom, 
+        rgba(139, 121, 94, 0.25) 0%,
+        rgba(101, 84, 75, 0.15) 100%
+    );
+    background-image: url(../assets/img/downloads/Aert-van-der-Neer-Night-Landscape-with-a-River-c.-1700.jpg);
+    backdrop-filter: blur(20px) saturate(180%);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 10%;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+}
+
+/* Make navbar responsive on mobile/tablet while keeping desktop layout */
+@media (max-width: 991.98px) {
+    .navbar {
+        padding: 12px 16px;
+    }
+}
+@media (max-width: 576px) {
+    .navbar {
+        padding: 10px 12px;
+    }
+    /* Iwas overflow */
+    #logo {
+        margin-inline-start: 0;
+    }
+}
+
+.navbar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, 
+        transparent 0%,
+        rgba(184, 154, 109, 0.15) 20%,
+        rgba(218, 192, 153, 0.25) 50%,
+        rgba(184, 154, 109, 0.15) 80%,
+        transparent 100%
+    );
+}
+
+li, a, #title {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    color: #f5f1e8;
+    text-decoration: none;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+#logo {
+    margin-inline-start: 0;
+    cursor: pointer;
+    height: 64px;
+    scale: 1.5;
+    width: auto;
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.5));
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+#logo:hover {
+    transform: scale(1.05);
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.7));
+}
+
+@media (max-width: 576px) {
+    #logo {
+        height: 56px;
+    }
+}
+
+/* Bootstrap navbar links styled to match theme */
+.navbar-nav .nav-link {
+    transition: all 0.3s ease 0s;
+    position: relative;
+    padding: 8px 20px;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 14px;
+    color: #f5f1e8;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.navbar-nav .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, 
+        rgba(184, 154, 109, 0) 0%,
+        rgba(218, 192, 153, 1) 50%,
+        rgba(184, 154, 109, 0) 100%
+    );
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.navbar-nav .nav-link:hover {
+    color: #dac099;
+    text-shadow: 0 2px 8px rgba(218, 192, 153, 0.5);
+    background: rgba(218, 192, 153, 0.1);
+}
+
+.navbar-nav .nav-link:hover::after {
+    width: 80%;
+}
+
+/* Toggler visibility on dark custom background */
+.navbar-dark .navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.25);
+}
+
+.navbar-dark .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255,0.85)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+/* Center nav items in collapsed mobile menu */
+@media (max-width: 991.98px) {
+    .navbar-collapse {
+        justify-content: center;
+    }
+    .navbar-nav {
+        width: 100%;
+        align-items: center;
+    }
+    .navbar-nav .nav-item {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    .navbar-nav .nav-link {
+        text-align: center;
+    }
+}
+
+button {
+    padding: 10px 32px;
+    background: linear-gradient(135deg, #dac099 0%, #b89a6d 100%);
+    border: 1px solid rgba(184, 154, 109, 0.6);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+    color: #2c2418;
+    font-weight: 600;
+    letter-spacing: 1px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    text-transform: uppercase;
+    font-size: 12px;
+}
+
+button:hover {
+    background: linear-gradient(135deg, #e8d7b8 0%, #dac099 100%);
+    box-shadow: 0 4px 12px rgba(218, 192, 153, 0.4), 0 2px 8px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px);
+}
+
+section {
+    min-height: 100vh; /* allow content to grow normally */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.homepage-one {
+    position: relative;
+    width: 100%;
+    min-height: clamp(60vh, 75vh, 85vh);
+    margin-top: 20px;
+    background-image: url(../assets/img/downloads/131107152744-mona-lisa-1024x1536.jpg);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    text-align: center;
+    background-color: #1a1a1a;
+    padding: 8vh 5% 6vh;
+}
+
+.homepage-one::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.25) 40%, rgba(0,0,0,0.35) 100%);
+    pointer-events: none;
+}
+
+.homepage-one h3 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 700;
+    color: white;
+    margin-bottom: 20pxs;
+    text-shadow: 3px 3px 15px rgba(0, 0, 0, 0.8);
+    letter-spacing: 2px;
+    z-index: 1;
+}
+
+.homepage-one h2 {
+    font-size: clamp(1rem, 3.2vw, 1.5rem);
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.95);
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+    letter-spacing: 3px;
+    z-index: 1;
+}
+
+/* Homepage-one responsive refinements */
+@media (max-width: 767.98px) {
+    .homepage-one {
+        background-attachment: scroll;
+        width: 100vw; /* true full width */
+        margin-left: calc(50% - 50vw);
+        margin-right: calc(50% - 50vw);
+        /* Make hero cover the full mobile viewport height, accounting for navbar */
+        min-height: 100vh;
+        min-height: 100svh; /* modern mobile browsers */
+        margin-top: 0;
+        padding: calc(56px + 3vh) 0 4vh; /* tighter spacing */
+    }
+    /* Keep readable insets for text while background is full */
+    .homepage-one h3,
+    .homepage-one h2 {
+        padding-left: 6%;
+        padding-right: 6%;
+    }
+    .homepage-one h3 { letter-spacing: 1px; margin-bottom: 0.5rem; }
+    .homepage-one h2 { letter-spacing: 2px; margin-top: 0.25rem; }
+}
+
+/* Apply responsive background with safe text insets on mobile to other sections */
+@media (max-width: 767.98px) {
+    .homepage-two,
+    .homepage-three,
+    .homepage-four,
+    .homepage-five,
+    .contact-section,
+    .submit-section {
+        width: 100%;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    /* Add consistent inner padding for content blocks */
+    .homepage-three .container,
+    .homepage-two .artwork-content,
+    .homepage-four .artwork-content,
+    .homepage-five .footer-content,
+    .contact-section .contact-card,
+    .submit-section .submit-card {
+        padding-left: 6%;
+        padding-right: 6%;
+    }
+
+    /* Reduce heavy vertical padding on contact/submit for small screens */
+    .contact-section,
+    .submit-section {
+        padding-top: 96px;
+        padding-bottom: 56px;
+    }
+}
+
+@media (orientation: landscape) and (max-height: 480px) {
+    .homepage-one { min-height: 70vh; padding: 6vh 5%; }
+    .homepage-one h3 { font-size: clamp(1.6rem, 6vw, 2.6rem); }
+    .homepage-one h2 { font-size: clamp(0.9rem, 2.4vw, 1.2rem); }
+}
+
+/*Mao ni tung murag general style para sa section three  (basically section two pero mali ang naming ko)*/
+.homepage-three {
+    position: relative;
+    width: 100%;
+    height: auto; /* override global section height */
+    min-height: 100vh;
+    background: linear-gradient(135deg, 
+        rgba(26, 20, 16, 0.98) 0%, 
+        rgba(16, 12, 10, 0.99) 100%),
+        url(../assets/img/downloads/Aert-van-der-Neer-Night-Landscape-with-a-River-c.-1700.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    padding: 90px 5% 100px; /* generous top/bottom spacing */
+    margin: 0 0 40px 0; /* no gap above, keep space below */
+    overflow: hidden; /* avoid spillover */
+}
+
+.homepage-three::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, 
+        rgba(61, 48, 42, 0.5) 0%, 
+        rgba(41, 32, 28, 0.6) 100%);
+    pointer-events: none;
+}
+
+.text-content {
+    display: flex;
+    flex-direction: column;
+    max-width: 700px;
+    z-index: 1;
+    justify-content: center;
+    
+}
+
+.text-content h1 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: #dac099;
+    text-shadow: 3px 3px 15px rgba(0, 0, 0, 0.9),
+                 0 0 40px rgba(218, 192, 153, 0.5);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin: 0 0 15px 0;
+    line-height: 1.2;
+    z-index: 1;
+}
+
+.text-content h5 {
+    font-size: 1.4rem;
+    font-weight: 400;
+    line-height: 1.6;
+    color: #f5f1e8;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+    letter-spacing: 0.5px;
+    margin: auto 0 0 0;
+    background: rgba(0, 0, 0, 0.4);
+    padding: 25px 30px;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    border-right: 3px solid rgba(218, 192, 153, 0.5);
+    box-shadow: 0 0 40px rgba(218, 192, 153, 0.2),
+                0 8px 32px rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+/* Using Bootstrap grid now; keep z-index for inner content */
+.homepage-three .container {
+    position: relative;
+    z-index: 1;
+}
+
+
+.homepage-three .img-fluid {
+    max-width: 100%;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 8px 40px rgba(218, 192, 153, 0.4),
+                0 4px 20px rgba(0, 0, 0, 0.4),
+                0 0 60px rgba(184, 154, 109, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 2px solid rgba(218, 192, 153, 0.2);
+}
+
+.homepage-three .img-fluid:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 50px rgba(218, 192, 153, 0.6),
+                0 6px 30px rgba(0, 0, 0, 0.5),
+                0 0 80px rgba(218, 192, 153, 0.5);
+}
+
+/* Desktop overlay text inside image */
+@media (min-width: 992px) {
+    /* Desktop image sizing for side layout */
+    .homepage-three .home3-image {
+        max-width: 520px;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .homepage-three {
+        padding: 70px 5% 80px;
+        margin: 0 0 30px 0;
+    }
+    .text-content h1 {
+        font-size: 2.6rem;
+    }
+    .text-content h5 {
+        font-size: 1.2rem;
+        padding: 20px 22px;
+    }
+}
+
+/* Mobile-first enhancements for homepage-three */
+@media (max-width: 576px) {
+    .homepage-three {
+        padding: 60px 5% 70px;
+        margin: 0 0 24px 0;
+    }
+    .homepage-three .text-content {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+    }
+    .homepage-three .text-content h1 {
+        font-size: 2.8rem;
+        line-height: 1.2;
+    }
+    .homepage-three .text-content h5 {
+        font-size: 1.25rem;
+        line-height: 1.65;
+        padding: 18px 20px;
+    }
+    .homepage-three .img-fluid {
+        max-width: 65%;
+    }
+}
+
+/*Mao ni para sa Section two*/
+.homepage-two {
+    position: relative;
+    width: 100%;
+    height: auto;
+    min-height: auto;
+    padding: 40px 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    overflow: hidden;
+}
+
+.section-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.artwork-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2rem;
+    max-width: 75rem; /* 1200px */
+    width: 100%;
+    padding: 1.25rem;
+    margin: 1.25rem 0 0.75rem 0;
+    position: relative;
+    animation: fadeInUp 1s ease-out forwards;
+    opacity: 0;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.artwork-content:nth-child(2) {
+    align-self: flex-start;
+    animation-delay: 0.2s;
+}
+
+.artwork-content:nth-child(3) {
+    align-self: flex-end;
+    flex-direction: row-reverse;
+    animation-delay: 0.4s;
+}
+
+.artwork-content:nth-child(4) {
+    align-self: flex-start;
+    animation-delay: 0.6s;
+}
+
+.artwork-content:nth-child(3) h1 {
+    left: auto;
+    right: 0;
+}
+
+.artwork-content:nth-child(4) {
+    align-self: flex-start;
+}
+
+.artwork-image {
+    width: 100%;
+    max-width: 25rem; /* 400px */
+    height: auto;
+    border-radius: 10px;
+    flex-shrink: 0;
+    box-shadow: 0 8px 40px rgba(218, 192, 153, 0.4),
+                0 4px 20px rgba(0, 0, 0, 0.3),
+                0 0 60px rgba(184, 154, 109, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.homepage-four .artwork-image {
+    width: 100%;
+    max-width: 400px;
+    display: block;
+    object-fit: cover;
+}
+
+.artwork-image:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 50px rgba(218, 192, 153, 0.6),
+                0 6px 30px rgba(0, 0, 0, 0.4),
+                0 0 80px rgba(218, 192, 153, 0.5);
+}
+
+.homepage-four .artwork-content {
+    animation: fadeInUp 1s ease-out forwards;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 16px 0;
+    width: 100%;
+    max-width: 500px;
+}
+
+.homepage-four .artwork-content:nth-child(2) {
+    animation-delay: 0.1s;
+}
+
+.homepage-four .artwork-content:nth-child(3) {
+    animation-delay: 0.2s;
+}
+
+.homepage-four .artwork-content:nth-child(4) {
+    animation-delay: 0.3s;
+}
+
+.homepage-four .artwork-content:nth-child(5) {
+    animation-delay: 0.4s;
+}
+
+.homepage-four .artwork-content:nth-child(6) {
+    animation-delay: 0.5s;
+}
+
+.homepage-four .artwork-content a {
+    display: block;
+    width: 100%;
+    max-width: 400px;
+}
+
+@media (max-width: 768px) {
+    .homepage-four {
+        grid-template-columns: 1fr;
+        padding: 24px 4%;
+        gap: 12px;
+    }
+    
+    .homepage-four .artwork-content {
+        max-width: 100%;
+        gap: 8px;
+    }
+    
+    .section-title {
+        font-size: 3rem;
+    }
+
+    /* Make images smaller on mobile for cleaner text flow */
+    .homepage-four .artwork-image {
+        max-width: 260px;
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* Tighten text spacing and size under images */
+    .painting-name {
+        font-size: 1.1rem;
+        letter-spacing: 1px;
+        padding: 6px 10px;
+        margin-top: 4px;
+    }
+}
+
+/* Global responsive media */
+img, video {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Text overflow safety */
+.text-content, .artwork-description, .painting-name {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
+/* Breakpoints: small phones */
+@media (max-width: 767.98px) {
+    html { font-size: 15px; }
+    .artwork-content {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+    .artwork-image { max-width: 70vw; }
+    .text-content h1 { font-size: clamp(1.8rem, 6vw, 2.6rem); }
+    .text-content h5 { font-size: clamp(1rem, 3.6vw, 1.25rem); }
+}
+
+/* Tablets */
+@media (min-width: 768px) and (max-width: 1023.98px) {
+    html { font-size: 16px; }
+    .artwork-content { gap: 1.25rem; }
+    .artwork-image { max-width: 22rem; }
+}
+
+/* Laptops/desktops */
+@media (min-width: 1024px) {
+    html { font-size: 16px; }
+    .artwork-content { gap: 2rem; }
+}
+
+
+.artwork-content h1 {
+    position: absolute;
+    top: -35px;
+    left: 0;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #dac099;
+    text-shadow: 3px 3px 15px rgba(0, 0, 0, 0.9),
+                 0 0 30px rgba(218, 192, 153, 0.5);
+    letter-spacing: 2px;
+    margin: 0;
+    text-transform: uppercase;
+    overflow: hidden;
+}
+
+.artwork-description {
+    font-size: 1.1rem;
+    font-weight: 400;
+    line-height: 1.8;
+    color: #f5f1e8;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+    letter-spacing: 0.5px;
+    max-width: 600px;
+    margin: 0;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 25px;
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+    border-left: 3px solid rgba(218, 192, 153, 0.5);
+    overflow: hidden;
+}
+
+/* Prevent title overlap in homepage-two by pushing description lower */
+.homepage-two .artwork-description {
+    margin-top: 16px;
+}
+
+.painting-name {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #dac099;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin: 0;
+    text-align: center;
+    width: 100%;
+    padding: 8px 12px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    border-top: 2px solid rgba(218, 192, 153, 0.4);
+}
+
+/* Mao ni naman toh para sa section four*/
+.homepage-four {
+    position: relative;
+    width: 100%;
+    height: auto;
+    min-height: auto;
+    background: linear-gradient(135deg, 
+        rgba(26, 20, 16, 0.98) 0%, 
+        rgba(16, 12, 10, 0.99) 100%),
+        url(../assets/img/downloads/Aert-van-der-Neer-Night-Landscape-with-a-River-c.-1700.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    padding: 60px 5%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    justify-items: center;
+    align-items: start;
+    gap: 16px;
+    overflow: hidden;
+}
+
+/* Desktop: force 3x2 grid for homepage-four */
+@media (min-width: 1024px) {
+    .homepage-four {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+    }
+    .homepage-four .artwork-content {
+        max-width: 100%;
+        margin: 12px 0;
+    }
+    .homepage-four .artwork-content a {
+        max-width: 100%;
+    }
+}
+
+.homepage-four::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, 
+        rgba(77, 62, 55, 0.5) 0%, 
+        rgba(41, 32, 28, 0.6) 100%);
+    pointer-events: none;
+}
+
+.section-title {
+    font-size: 5rem;
+    font-weight: 700;
+    color: #dac099;
+    text-shadow: 3px 3px 15px rgba(0, 0, 0, 0.9),
+                 0 0 40px rgba(218, 192, 153, 0.5);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+    z-index: 1;
+    text-align: center;
+    grid-column: 1 / -1;
+    width: 100%;
+}
+
+/* Mao ni tung para sa zoom animation and style */
+.zoom-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(20px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+    z-index: 9999;
+}
+
+.zoom-overlay:target {
+    opacity: 1;
+    visibility: visible;
+}
+
+.zoom-content {
+    position: relative;
+    max-width: 90%;
+    max-height: 90%;
+    text-align: center;
+    animation: zoomIn 0.4s ease;
+}
+
+@keyframes zoomIn {
+    from {
+        transform: scale(0.7);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.zoom-content img {
+    max-width: 100%;
+    max-height: 80vh;
+    object-fit: contain;
+}
+
+.zoom-content p {
+    color: #dac099;
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-top: 20px;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
+}
+
+.zoom-close {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    font-size: 4rem;
+    color: #dac099;
+    text-decoration: none;
+    line-height: 1;
+    transition: color 0.3s ease, transform 0.3s ease;
+    z-index: 10000;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
+}
+
+.zoom-close:hover {
+    color: #fff;
+    transform: rotate(90deg);
+}
+
+/* Footer ni siya sa last na section */
+.homepage-five {
+    position: relative;
+    width: 100%;
+    min-height: 180px;
+    background: linear-gradient(135deg, 
+        rgba(45, 35, 28, 0.85) 0%, 
+        rgba(35, 27, 22, 0.88) 100%),
+        url(../assets/img/downloads/59229.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 8%;
+}
+
+.footer-content {
+    max-width: 1200px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1.5fr 1fr;
+    gap: 60px;
+    align-items: start;
+}
+
+.footer-section {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.footer-section h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #f5f1e8;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+    border-bottom: 3px solid rgba(218, 192, 153, 0.4);
+    padding-bottom: 10px;
+}
+
+.footer-section p {
+    font-size: 1.1rem;
+    color: #e8e3d9;
+    line-height: 1.8;
+}
+
+.footer-section strong {
+    color: #dac099;
+    font-weight: 600;
+}
+
+.contact-info p {
+    margin: 8px 0;
+}
+
+.quote-section {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.quote-section blockquote {
+    font-size: 1.3rem;
+    color: #f5f1e8;
+    line-height: 1.8;
+    font-style: italic;
+    margin: 0;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.2);
+    border-left: 4px solid rgba(218, 192, 153, 0.6);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.quote-section cite {
+    display: block;
+    margin-top: 15px;
+    font-size: 1rem;
+    color: #dac099;
+    font-style: normal;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.copyright {
+    text-align: center;
+    color: #c4b8a8;
+    font-size: 0.95rem;
+    margin-top: 20px;
+}
+
+/* Submit Section */
+.contact-section,
+.submit-section {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    background-image: url(../assets/img/downloads/Aert-van-der-Neer-Night-Landscape-with-a-River-c.-1700.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 120px 8% 80px;
+}
+
+.contact-section::before,
+.submit-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg,
+        rgba(61, 48, 42, 0.5) 0%,
+        rgba(41, 32, 28, 0.6) 100%);
+    pointer-events: none;
+}
+
+.contact-card,
+.submit-card {
+    position: relative;
+    width: 100%;
+    max-width: 720px;
+    background: rgba(0, 0, 0, 0.35);
+    border-radius: 16px;
+    padding: 32px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 0 0 60px rgba(184, 154, 109, 0.25);
+    border: 1px solid rgba(218, 192, 153, 0.35);
+    backdrop-filter: blur(10px);
+}
+
+.contact-card h1,
+.submit-card h1 {
+    font-size: 2.4rem;
+    font-weight: 800;
+    color: #dac099;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-align: center;
+    margin: 0 0 10px 0;
+}
+
+.contact-card p.lead,
+.submit-card p.lead {
+    color: #e8e3d9;
+    text-align: center;
+    margin: 0 0 24px 0;
+}
+
+.contact-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px 24px;
+}
+
+.contact-form .full {
+    grid-column: 1 / -1;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    color: #dac099;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.form-control,
+.form-textarea {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.35);
+    border: 1px solid rgba(218, 192, 153, 0.35);
+    color: #f5f1e8;
+    border-radius: 10px;
+    padding: 12px 14px;
+    outline: none;
+    transition: box-shadow 0.2s ease, border-color 0.2s ease, transform 0.1s ease;
+}
+
+.form-textarea {
+    min-height: 140px;
+    resize: vertical;
+}
+
+.form-control::placeholder,
+.form-textarea::placeholder {
+    color: rgba(245, 241, 232, 0.6);
+}
+
+.form-control:focus,
+.form-textarea:focus {
+    border-color: rgba(218, 192, 153, 0.8);
+    box-shadow: 0 0 0 3px rgba(218, 192, 153, 0.25), 0 10px 30px rgba(0, 0, 0, 0.4);
+    transform: translateY(-1px);
+}
+
+.form-actions {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: center;
+    margin-top: 8px;
+}
+
+.btn-primary {
+    padding: 12px 32px;
+    background: linear-gradient(135deg, #dac099 0%, #b89a6d 100%);
+    border: 1px solid rgba(218, 192, 153, 0.6);
+    border-radius: 10px;
+    cursor: pointer;
+    color: #2c2418;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-size: 0.95rem;
+    box-shadow: 0 8px 28px rgba(218, 192, 153, 0.35), 0 6px 18px rgba(0, 0, 0, 0.45);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #e8d7b8 0%, #dac099 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 14px 32px rgba(218, 192, 153, 0.45), 0 10px 24px rgba(0, 0, 0, 0.45);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+.submit-card .back-link {
+    display: flex;
+    justify-content: center;
+    margin-top: 18px;
+}
+
+.submit-card .back-link a button {
+    padding: 10px 28px;
+    border-radius: 8px;
+}
+
+/* Footer (homepage-five) mobile polish for iPhone XR and similar */
+@media (max-width: 767.98px) {
+    .homepage-five { background-attachment: scroll; padding: 24px 4%; }
+    .homepage-five .footer-content { grid-template-columns: 1fr; gap: 14px; }
+    .footer-section { align-items: center; text-align: center; }
+    .footer-section h2 { font-size: 1.4rem; margin-bottom: 4px; }
+    .footer-section p { font-size: 0.95rem; line-height: 1.6; }
+    .copyright { margin-top: 12px; font-size: 0.9rem; }
+}
+
+/* Homepage-two mobile layout parity and overlap fixes */
+@media (max-width: 767.98px) {
+    .homepage-two .artwork-content {
+        flex-direction: column !important;
+        align-items: center;
+        text-align: center;
+        gap: 1rem;
+    }
+    .homepage-two .artwork-content h1 {
+        position: static;
+        top: auto;
+        left: auto;
+        margin: 0 0 0.5rem 0;
+        font-size: clamp(1.6rem, 5.5vw, 2.2rem);
+    }
+    .homepage-two .artwork-image {
+        max-width: 70vw;
+        width: 100%;
+        height: auto;
+    }
+    .homepage-two .artwork-description {
+        margin-top: 0.5rem;
+        text-align: left;
+        padding: 1rem;
+        line-height: 1.65;
+        font-size: clamp(1rem, 3.6vw, 1.1rem);
+    }
+}
