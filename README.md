@@ -6,7 +6,7 @@ Welcome to the **Asaixc Gallery**, a virtual museum that showcases important pai
 
 - Browse a collection of historical Philippine paintings.
 - Learn about the artists, the stories behind the paintings, and their cultural importance.
-- A simple but yeat impactful final project for ICT - 01. 
+- A simple but yet impactful final project for ICT - 01. 
 
 ## Paintings Included 🎨
 
