@@ -20,3 +20,8 @@ Some of the featured paintings include:
 
 Each painting comes with descriptions and historical context to help you appreciate its significance. 🖼️
 
+## How-to❓
+- Open index.html
+- Run in an IDE
+- Run index.html for the homepage
+
