@@ -24,4 +24,5 @@ Each painting comes with descriptions and historical context to help you appreci
 - Open index.html
 - Run in an IDE
 - Run index.html for the homepage
+- or just click https://asaixcgallery.netlify.app/
 
